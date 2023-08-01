@@ -1,0 +1,10 @@
+.input {
+    margin: 0 auto;
+    display: block;
+    width: 277px;
+    height: 56px;
+}
+
+.input + .input {
+    margin-top: 45px;
+}

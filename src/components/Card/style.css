@@ -1,0 +1,29 @@
+
+
+.card-container{
+    border: 1px solid grey;
+    background-color: #fff;
+    width: 500px;
+    height: 670px;
+    padding-top: 80px;
+    text-align: center;
+   
+
+}
+
+.img-logo {
+    width: 240px;
+    height: 40px;
+    margin-bottom: 85px;
+}
+
+button {
+    width: 277px;
+    height: 56px;
+    margin-top: 37px;
+    background-color: #44B26F;
+    color: #fff;
+    border: none;
+
+    
+}

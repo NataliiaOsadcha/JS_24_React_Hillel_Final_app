@@ -1,0 +1,45 @@
+.table-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.table-main {
+  border: 1px solid grey;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.table-main td {
+  padding: 10px 0;
+  width: 160px;
+  text-align: center;
+}
+
+.table-tr-main {
+  background: #0ec86f;
+  color: #726969;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #d9d9d9;
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #3cd78c;
+  color: #a58f8f;
+}
+
+.td-icon-cell {
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.td-icon-cell > svg {
+  width: 20px;
+  height: 20px;
+}

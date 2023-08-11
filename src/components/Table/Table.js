@@ -1,53 +1,65 @@
 import "./Table.css";
 import { FaPen, FaBox } from "react-icons/fa";
 
+const products = [
+  {
+    id: 0,
+    category: "PC",
+    name: "Lenovo Y50-70",
+    quantity: 5,
+    price: 25000.0,
+  },
+  {
+    id: 1,
+    category: "Clothes",
+    name: "Nike M Nk Df Acd21",
+    quantity: 22,
+    price: 4000.0,
+  },
+  {
+    id: 2,
+    category: "Plumbing",
+    name: "CERSANIT MITO 17",
+    quantity: 1337,
+    price: 5000.0,
+  },
+  {
+    id: 3,
+    category: "Plumbing",
+    name: "CERSANIT MITO 17",
+    quantity: 1337,
+    price: 5000.0,
+  },
+];
+
 const Table = () => {
   return (
     <div className="table-container">
       <table className="table-main">
-        <tr className="table-tr-main">
-          <td>ID</td>
-          <td>Category</td>
-          <td>Name</td>
-          <td>Quantity</td>
-          <td>Price (₴)</td>
-          <td></td>
-        </tr>
-
+        <thead>
+          <tr className="table-tr-main">
+            <th>ID</th>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price (₴)</th>
+            <th></th>
+          </tr>
+        </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>PC</td>
-            <td>Lenovo Y50-70</td>
-            <td>5</td>
-            <td>25,000.00</td>
-            <td className="td-icon-cell">
-              <FaPen />
-              <FaBox />
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Clothes</td>
-            <td>Nike M Nk Df Acd21</td>
-            <td>22</td>
-            <td>4,000.00</td>
-            <td className="td-icon-cell">
-              <FaPen />
-              <FaBox />
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Plumbing</td>
-            <td>CERSANIT MITO 17</td>
-            <td>1337</td>
-            <td>5,000.00</td>
-            <td className="td-icon-cell">
-              <FaPen />
-              <FaBox />
-            </td>
-          </tr>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.category}</td>
+              <td>{product.name}</td>
+              <td>{product.quantity}</td>
+              <td>{product.price.toFixed(2)}</td>
+              <td className="td-icon-cell">
+                <FaPen />
+                <FaBox />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

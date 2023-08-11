@@ -16,11 +16,6 @@
   text-align: center;
 }
 
-.table-tr-main {
-  background: #0ec86f;
-  color: #726969;
-}
-
 tbody tr:nth-child(odd) {
   background-color: #d9d9d9;
   color: #ffffff;
@@ -42,4 +37,10 @@ tbody tr:nth-child(even) {
 .td-icon-cell > svg {
   width: 20px;
   height: 20px;
+}
+
+.table-tr-main th {
+  padding: 10px;
+  background: #0ec86f;
+  color: #726969;
 }

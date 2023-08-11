@@ -11,7 +11,7 @@ const Card = () => {
       </div>
       <Input placeholder="User name" />
       <Input placeholder="Password" />
-      <Button text="Login" />
+      <Button className="card-btn" text="Login" />
     </div>
   );
 };

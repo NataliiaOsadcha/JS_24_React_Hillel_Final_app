@@ -1,10 +1,13 @@
-button {
-  width: 277px;
-  height: 56px;
-  margin-top: 37px;
-  background-color: #44b26f;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  font-weight: 600;
+.custom-btn {
+  position: relative;
+}
+
+.button-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 15px 15px 15px 20px;
+  color: #000000;
+  width: 25px;
+  height: 25px;
 }

@@ -1,3 +1,4 @@
+.password-container,
 .input {
   margin: 0 auto;
   display: block;
@@ -7,13 +8,43 @@
   background: #d9d9d9;
 }
 
+.input {
+  padding: 20px;
+  outline: none;
+}
+
+.password-container {
+  margin-top: 45px;
+  position: relative;
+}
+
 .input + .input {
   margin-top: 45px;
 }
 
+.input:hover,
+.input:focus,
+.input:active {
+  box-shadow: inset 0px 0px 2px #44b26f;
+  cursor: pointer;
+}
+
 .input::placeholder {
-  padding: 20px 20px 20px;
   color: #44b26f;
-  font-style: 14px;
+  font-size: 14px;
   font-weight: 600;
+}
+
+.toggle-container {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-container > svg {
+  width: 34px;
+  height: 23px;
+  color: #44b26f;
 }

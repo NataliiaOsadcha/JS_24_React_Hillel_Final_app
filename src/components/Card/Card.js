@@ -2,6 +2,7 @@ import "./Card.css";
 import Input from "../Input/Input";
 import logo from "../../assets/logo_main.svg";
 import Button from "../Button/Button";
+import PasswordInput from "../PasswordInput/PasswordInput";
 
 const Card = () => {
   return (
@@ -10,7 +11,7 @@ const Card = () => {
         <img className="img-logo" src={logo} alt="logo" />
       </div>
       <Input placeholder="User name" />
-      <Input placeholder="Password" />
+      <PasswordInput placeholder="Password" />
       <Button className="card-btn" text="Login" />
     </div>
   );

@@ -6,7 +6,7 @@ import Table from "../../components/Table/Table";
 
 function ProductTable() {
   return (
-    <div className="pT-container">
+    <div className="container">
       <div>
         <img className="img-logo-white" src={logo} alt="logo" />
       </div>

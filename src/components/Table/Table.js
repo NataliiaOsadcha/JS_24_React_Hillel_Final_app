@@ -32,7 +32,7 @@ const products = [
   },
 ];
 
-const Table = () => {
+const Table = ({ products }) => {
   return (
     <div className="table-container">
       <table className="table-main">

@@ -48,3 +48,7 @@
   height: 23px;
   color: #44b26f;
 }
+.input.error,
+.password-container.error {
+  border-color: red;
+}

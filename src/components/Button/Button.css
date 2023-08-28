@@ -1,5 +1,6 @@
 .custom-btn {
   position: relative;
+  cursor: pointer;
 }
 
 .button-icon {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+import "./PasswordInput.css";
 
-const PasswordInput = ({ placeholder }) => {
+const PasswordInput = ({ placeholder, onChange, isError }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleToggle = () => {
@@ -9,12 +10,13 @@ const PasswordInput = ({ placeholder }) => {
   };
 
   return (
-    <div className="password-container">
+    <div className={`password-container ${isError ? "error" : ""}`}>
       <input
-        className="input"
+        className={`input ${isError ? "error" : ""}`}
         type={showPassword ? "text" : "password"}
         placeholder={placeholder}
         name="password"
+        onChange={onChange}
       />
       <div className="toggle-container" onClick={handleToggle}>
         {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}

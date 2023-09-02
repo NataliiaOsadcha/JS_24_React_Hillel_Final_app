@@ -4,11 +4,13 @@ import Input from "../Input/Input";
 import logo from "../../assets/logo_main.svg";
 import Button from "../Button/Button";
 import PasswordInput from "../PasswordInput/PasswordInput";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ username: false, password: false });
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     setError({ username: false, password: false });
@@ -19,17 +21,16 @@ const Card = () => {
 
     if (!password) {
       setError((prevError) => ({ ...prevError, password: true }));
+      return;
+    }
+
+    const staticUsername = "admin";
+    const staticPassword = "12345";
+
+    if (username === staticUsername && password === staticPassword) {
+      navigate("/products");
     } else {
-      const staticUsername = "admin";
-      const staticPassword = "12345";
-
-      if (username === staticUsername && password === staticPassword) {
-        const token = "generated_token";
-
-        localStorage.setItem("token", token);
-      } else {
-        setError({ username: true, password: true });
-      }
+      setError({ username: true, password: true });
     }
   };
 

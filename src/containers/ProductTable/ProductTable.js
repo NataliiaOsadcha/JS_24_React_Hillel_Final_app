@@ -17,7 +17,7 @@ function ProductTable() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setProducts(data); // Отримані дані потрібно передати у setProducts
+        setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }

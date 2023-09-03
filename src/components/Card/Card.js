@@ -15,10 +15,6 @@ const Card = () => {
   const handleLogin = () => {
     setError({ username: false, password: false });
 
-    if (!username) {
-      setError((prevError) => ({ ...prevError, username: true }));
-    }
-
     if (!password) {
       setError((prevError) => ({ ...prevError, password: true }));
       return;

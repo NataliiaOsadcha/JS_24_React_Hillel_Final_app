@@ -26,7 +26,7 @@ function ProductPreview() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container height">
       <div className="logo-container">
         <img className="img-logo-white" src={logo} alt="logo" />
       </div>

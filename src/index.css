@@ -18,5 +18,8 @@ code {
   /* border: 2px solid grey; */
   margin: 0 auto;
   width: 1440px;
+}
+
+.height {
   height: 100vh;
 }

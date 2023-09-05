@@ -24,6 +24,8 @@ const Card = () => {
     const staticPassword = "12345";
 
     if (username === staticUsername && password === staticPassword) {
+      const token = "generated_token";
+      localStorage.setItem("token", token);
       navigate("/products");
     } else {
       setError({ username: true, password: true });

@@ -5,9 +5,11 @@ import Button from "../../components/Button/Button";
 import { BsPlusLg, BsPerson } from "react-icons/bs";
 import Table from "../../components/Table/Table";
 import { API_URL } from "../../constants/index";
+import { useNavigate } from "react-router-dom";
 
 function ProductTable() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getProducts() {
@@ -17,7 +19,7 @@ function ProductTable() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setProducts(data); // Отримані дані потрібно передати у setProducts
+        setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -25,13 +27,22 @@ function ProductTable() {
     getProducts();
   }, []);
 
+  const handlePreviewClick = () => {
+    navigate("/products-preview");
+  };
+
   return (
     <div className="container">
       <div>
         <img className="img-logo-white" src={logo} alt="logo" />
       </div>
       <div className="pT-buttons-container">
-        <Button className="pT-btn" text="Preview" icon={<BsPlusLg />} />
+        <Button
+          className="pT-btn"
+          text="Preview"
+          icon={<BsPlusLg />}
+          onClick={handlePreviewClick}
+        />
         <Button className="pT-btn" text="Add product" icon={<BsPerson />} />
       </div>
       <div>

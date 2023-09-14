@@ -1,38 +1,29 @@
-import "./Table.css";
+import React, { useState } from "react";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import { FaPen, FaBox } from "react-icons/fa";
+import "./Table.css";
 
-const products = [
-  {
-    id: 0,
-    category: "PC",
-    name: "Lenovo Y50-70",
-    quantity: 5,
-    price: 25000.0,
-  },
-  {
-    id: 1,
-    category: "Clothes",
-    name: "Nike M Nk Df Acd21",
-    quantity: 22,
-    price: 4000.0,
-  },
-  {
-    id: 2,
-    category: "Plumbing",
-    name: "CERSANIT MITO 17",
-    quantity: 1337,
-    price: 5000.0,
-  },
-  {
-    id: 3,
-    category: "Plumbing",
-    name: "CERSANIT MITO 17",
-    quantity: 1337,
-    price: 5000.0,
-  },
-];
+const Table = ({ products, onDelete }) => {
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
-const Table = ({ products }) => {
+  const handleDeleteClick = (productId) => {
+    setSelectedProductId(productId);
+    setOpenDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setSelectedProductId(null);
+    setOpenDeleteModal(false);
+  };
+
+  const handleConfirmDelete = () => {
+    if (selectedProductId) {
+      onDelete(selectedProductId);
+      setSelectedProductId(null);
+    }
+    setOpenDeleteModal(false);
+  };
   return (
     <div className="table-container">
       <table className="table-main">
@@ -56,12 +47,17 @@ const Table = ({ products }) => {
               <td>{product.price.toFixed(2)}</td>
               <td className="td-icon-cell">
                 <FaPen />
-                <FaBox />
+                <FaBox onClick={() => handleDeleteClick(product.id)} />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <DeleteModal
+        open={openDeleteModal}
+        handleClose={handleCloseDeleteModal}
+        handleDelete={handleConfirmDelete}
+      />
     </div>
   );
 };

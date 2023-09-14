@@ -11,24 +11,39 @@ function ProductTable() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getProducts() {
-      try {
-        const response = await fetch(`${API_URL}/products`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+  async function getProducts() {
+    try {
+      const response = await fetch(`${API_URL}/products`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
+  }
+
+  useEffect(() => {
     getProducts();
   }, []);
 
   const handlePreviewClick = () => {
     navigate("/products-preview");
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      const response = await fetch(`${API_URL}/products/${productId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      getProducts();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
   };
 
   return (
@@ -47,7 +62,7 @@ function ProductTable() {
       </div>
       <div>
         <h2 className="pT-h2">Products</h2>
-        <Table products={products} />
+        <Table products={products} onDelete={handleDeleteProduct} />
       </div>
     </div>
   );

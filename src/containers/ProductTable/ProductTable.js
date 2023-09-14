@@ -32,7 +32,7 @@ function ProductTable() {
   };
 
   return (
-    <div className="container">
+    <div className="container height">
       <div>
         <img className="img-logo-white" src={logo} alt="logo" />
       </div>
@@ -46,7 +46,7 @@ function ProductTable() {
         <Button className="pT-btn" text="Add product" icon={<BsPerson />} />
       </div>
       <div>
-        <h2>Products</h2>
+        <h2 className="pT-h2">Products</h2>
         <Table products={products} />
       </div>
     </div>

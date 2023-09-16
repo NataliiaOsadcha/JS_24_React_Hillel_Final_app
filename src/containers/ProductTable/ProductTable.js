@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductTable.css";
 import logo from "../../assets/logo_main_white.svg";
 import Button from "../../components/Button/Button";
 import { BsPlusLg, BsPerson } from "react-icons/bs";
 import Table from "../../components/Table/Table";
+import ProductFormModal from "../../components/ProductFormModal/ProductFormModal";
 import { API_URL } from "../../constants/index";
 import { useNavigate } from "react-router-dom";
 
 function ProductTable() {
   const [products, setProducts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
 
   async function getProducts() {
@@ -19,17 +23,30 @@ function ProductTable() {
       }
       const data = await response.json();
       setProducts(data);
+      setIsLoaded(true);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   }
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    if (!isLoaded) {
+      getProducts();
+    }
+  }, [isLoaded]);
 
   const handlePreviewClick = () => {
     navigate("/products-preview");
+  };
+
+  const handleAddProductClick = () => {
+    setIsModalOpen(true);
+    setIsEditMode(false);
+  };
+
+  const handleEditProductClick = () => {
+    setIsModalOpen(true);
+    setIsEditMode(true);
   };
 
   const handleDeleteProduct = async (productId) => {
@@ -58,13 +75,28 @@ function ProductTable() {
           icon={<BsPlusLg />}
           onClick={handlePreviewClick}
         />
-        <Button className="pT-btn" text="Add product" icon={<BsPerson />} />
+        <Button
+          className="pT-btn"
+          text="Add product"
+          icon={<BsPerson />}
+          onClick={handleAddProductClick}
+        />
       </div>
       <div>
         <h2 className="pT-h2">Products</h2>
-        <Table products={products} onDelete={handleDeleteProduct} />
+        <Table
+          products={products}
+          onDelete={handleDeleteProduct}
+          onEdit={handleEditProductClick}
+        />
       </div>
+      <ProductFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        isEditMode={isEditMode}
+      />
     </div>
   );
 }
+
 export default ProductTable;

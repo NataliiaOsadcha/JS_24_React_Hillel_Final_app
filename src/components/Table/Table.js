@@ -3,7 +3,7 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import { FaPen, FaBox } from "react-icons/fa";
 import "./Table.css";
 
-const Table = ({ products, onDelete }) => {
+const Table = ({ products, onDelete, onEdit }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -24,6 +24,7 @@ const Table = ({ products, onDelete }) => {
     }
     setOpenDeleteModal(false);
   };
+
   return (
     <div className="table-container">
       <table className="table-main">
@@ -46,7 +47,7 @@ const Table = ({ products, onDelete }) => {
               <td>{product.quantity}</td>
               <td>{product.price.toFixed(2)}</td>
               <td className="td-icon-cell">
-                <FaPen />
+                <FaPen onClick={() => onEdit(product.id)} />
                 <FaBox onClick={() => handleDeleteClick(product.id)} />
               </td>
             </tr>
